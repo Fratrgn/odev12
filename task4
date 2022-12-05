@@ -1,0 +1,6 @@
+SELECT customer.first_name, customer.last_name FROM payment
+INNER JOIN customer ON payment.customer_id = customer.customer_id
+WHERE payment.amount = ANY
+(
+	SELECT max(amount) FROM payment
+);
